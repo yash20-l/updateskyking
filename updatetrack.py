@@ -1,8 +1,10 @@
-import time
+# import time
 import requests
 
+from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
 
-
+@sched.scheduled_job('interval', minutes=360)
 def trackEveryShipment():
 
     data = requests.get('https://skykingtrack.herokuapp.com/getships')
@@ -27,6 +29,3 @@ def trackEveryShipment():
             'date' : bookdate
         })
         
-while True:
-    trackEveryShipment()
-    time.sleep(86400)
