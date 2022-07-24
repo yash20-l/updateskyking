@@ -1,2 +1,1 @@
-web: python updatetrack.py
-worker: python updatetrack.py
+clock: python updatetrack.py
